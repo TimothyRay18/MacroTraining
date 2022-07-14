@@ -1,0 +1,19 @@
+Dim dialogBox As FileDialog
+    Set dialogBox = Application.FileDialog(msoFileDialogOpen)
+    
+    dialogBox.AllowMultiSelect = False
+    
+    dialogBox.Title = "Select a file"
+    
+'    dialogBox.InitialFileName = Range("A12").Value
+    
+    dialogBox.Filters.Clear
+    
+    dialogBox.Filters.Add "Excel workbooks", "*.xlsx;*.xlsm;*.xls"
+    
+    
+    If dialogBox.Show = -1 Then
+        ActiveSheet.Range("B1").Value = dialogBox.SelectedItems(1)
+    End If
+
+=IF(LEFT(B2;1)="L";"Prod";IF(B2="0012";"LTB";IF(LEFT(B2;1)="9";"Quarantine";IF(B2="";"SubCon";"WH"))))
